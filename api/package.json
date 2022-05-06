@@ -4,12 +4,14 @@
   "description": "Chris Elston's Home Website API",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon -e js server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chris Elston",
   "license": "ISC",
   "dependencies": {
-    "dree": "^3.3.7",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "yaml": "^2.0.1"
   }
 }
