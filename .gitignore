@@ -2,3 +2,5 @@ node_modules
 /content
 package-lock.json
 /config.yaml
+/ui/public/*.js
+/ui/public/*.map
