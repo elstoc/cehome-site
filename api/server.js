@@ -1,24 +1,25 @@
-const express = require('express');
 const path = require('path');
 const fs = require('fs');
+
+const express = require('express');
 const YAML = require('yaml');
 
 const { getDirStruct } = require('./recurse-tree.js');
 
 function yamlDataHandler(path) {
   const file = fs.readFileSync(path, 'utf8');
-  return { yaml: YAML.parse(file) };
+  return YAML.parse(file);
 }
 
-const { yaml: config } = yamlDataHandler('../config.yaml');
+const config = yamlDataHandler('../config.yaml');
 
 const app = express();
 
-app.get('/components', async (req, res) => {
+app.get('/api/components', async (req, res) => {
   const structure = getDirStruct(config.contentDir, /component[.]yaml/, yamlDataHandler);
   res.send(JSON.stringify(structure));
 });
 
 app.listen(config.apiPort, () => {
-  console.log(`UI started on port ${config.apiPort}`);
+  console.log(`API started on port ${config.apiPort}`);
 });
